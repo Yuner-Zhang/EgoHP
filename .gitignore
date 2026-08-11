@@ -1,0 +1,11 @@
+# Downloaded Project Aria example source (79 MB).
+examples/official_projectaria/raw/
+
+# The converted example keeps a local VRS copy, but it is not committed.
+examples/official_projectaria/converted/seq_official_sample/video.vrs
+
+__pycache__/
+*.py[cod]
+
+# Local working document; not part of the public repository.
+EgoHP_DATA_STRUCTURE.md

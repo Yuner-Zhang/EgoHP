@@ -1,0 +1,13 @@
+{
+  "sequence_id": "seq_official_sample",
+  "scene_name": "official_projectaria_sample",
+  "time_of_day": null,
+  "weather": null,
+  "crowd_density": null,
+  "occlusion_level": null,
+  "collector_id": null,
+  "num_frames": 123,
+  "frame_rate": 10,
+  "duration_sec": 12.3,
+  "trajectory_length_m": 7.66566
+}
