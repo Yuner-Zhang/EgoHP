@@ -1,11 +1,26 @@
 # Downloaded Project Aria example source (79 MB).
 examples/official_projectaria/raw/
 
-# The converted example keeps a local VRS copy, but it is not committed.
-examples/official_projectaria/converted/seq_official_sample/video.vrs
+# VRS and MPS inputs used to generate the public 20-second example are local.
+examples/official_projectaria/converted/**/*.vrs
+examples/official_projectaria/converted/**/mps/
+
+# Public Aria Gen2 VRS/MPS sample downloads (large local test data).
+examples/official_projectaria_gen2/raw/
 
 __pycache__/
 *.py[cod]
 
 # Local working document; not part of the public repository.
 EgoHP_DATA_STRUCTURE.md
+
+# Local dataset junction (points to G:\EgoHP_data).
+data/
+
+# Locally downloaded detector weights.
+*.pt
+
+# Pipeline working directories when the dataset root is inside the repo.
+.egohp_cache/
+.egohp_downloads/
+.egohp_staging/

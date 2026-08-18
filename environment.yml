@@ -1,0 +1,19 @@
+name: egohp_gen2
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch=2.6.0
+  - torchvision=0.21.0
+  - pytorch-cuda=12.4
+  - pip:
+      - projectaria-gen2-pilot-dataset==1.1.0
+      - projectaria-mps==1.2.3
+      - imageio==2.37.4
+      - imageio-ffmpeg==0.6.0
+      - Pillow==11.3.0
+      - ultralytics>=8.3.0,<9
+      - lap>=0.5.12

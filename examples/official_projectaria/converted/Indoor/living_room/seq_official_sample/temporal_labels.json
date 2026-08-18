@@ -1,0 +1,201 @@
+{
+  "sequence_id": "seq_official_sample",
+  "segments": [
+    {
+      "segment_id": 1,
+      "start_frame": 0,
+      "end_frame": 19,
+      "start_timestamp_ns": 5056370519965,
+      "end_timestamp_ns": 5058270393747,
+      "persons": [
+        {
+          "person_id": 0,
+          "person_distance_m": 2.444,
+          "human_distance_level": "close",
+          "relative_motion": "approaching"
+        },
+        {
+          "person_id": 1,
+          "person_distance_m": 2.412,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 2,
+          "person_distance_m": 2.639,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        }
+      ],
+      "camera_motion": "turning"
+    },
+    {
+      "segment_id": 2,
+      "start_frame": 20,
+      "end_frame": 39,
+      "start_timestamp_ns": 5058370387757,
+      "end_timestamp_ns": 5060270273486,
+      "persons": [
+        {
+          "person_id": 0,
+          "person_distance_m": 2.189,
+          "human_distance_level": "close",
+          "relative_motion": "receding"
+        },
+        {
+          "person_id": 1,
+          "person_distance_m": 2.407,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 2,
+          "person_distance_m": null,
+          "human_distance_level": null,
+          "relative_motion": "stationary"
+        }
+      ],
+      "camera_motion": "turning"
+    },
+    {
+      "segment_id": 3,
+      "start_frame": 40,
+      "end_frame": 59,
+      "start_timestamp_ns": 5060370267497,
+      "end_timestamp_ns": 5062270153018,
+      "persons": [
+        {
+          "person_id": 0,
+          "person_distance_m": 2.256,
+          "human_distance_level": "close",
+          "relative_motion": "receding"
+        },
+        {
+          "person_id": 1,
+          "person_distance_m": 2.528,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 2,
+          "person_distance_m": 2.738,
+          "human_distance_level": "close",
+          "relative_motion": "receding"
+        }
+      ],
+      "camera_motion": "turning"
+    },
+    {
+      "segment_id": 4,
+      "start_frame": 60,
+      "end_frame": 79,
+      "start_timestamp_ns": 5062370146975,
+      "end_timestamp_ns": 5064270032288,
+      "persons": [
+        {
+          "person_id": 0,
+          "person_distance_m": 2.453,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 1,
+          "person_distance_m": 1.77,
+          "human_distance_level": "close",
+          "relative_motion": "receding"
+        },
+        {
+          "person_id": 2,
+          "person_distance_m": 0.841,
+          "human_distance_level": "very_close",
+          "relative_motion": "receding"
+        }
+      ],
+      "camera_motion": "turning"
+    },
+    {
+      "segment_id": 5,
+      "start_frame": 80,
+      "end_frame": 139,
+      "start_timestamp_ns": 5064370026298,
+      "end_timestamp_ns": 5070269669425,
+      "persons": [
+        {
+          "person_id": 0,
+          "person_distance_m": 2.32,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 1,
+          "person_distance_m": 2.054,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 2,
+          "person_distance_m": 2.504,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        }
+      ],
+      "camera_motion": "turning"
+    },
+    {
+      "segment_id": 6,
+      "start_frame": 140,
+      "end_frame": 179,
+      "start_timestamp_ns": 5070369663329,
+      "end_timestamp_ns": 5074269426924,
+      "persons": [
+        {
+          "person_id": 0,
+          "person_distance_m": 1.585,
+          "human_distance_level": "close",
+          "relative_motion": "approaching"
+        },
+        {
+          "person_id": 1,
+          "person_distance_m": 1.959,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 2,
+          "person_distance_m": 2.417,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        }
+      ],
+      "camera_motion": "turning"
+    },
+    {
+      "segment_id": 7,
+      "start_frame": 180,
+      "end_frame": 199,
+      "start_timestamp_ns": 5074369420882,
+      "end_timestamp_ns": 5076269305570,
+      "persons": [
+        {
+          "person_id": 0,
+          "person_distance_m": 1.134,
+          "human_distance_level": "close",
+          "relative_motion": "receding"
+        },
+        {
+          "person_id": 1,
+          "person_distance_m": 2.084,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        },
+        {
+          "person_id": 2,
+          "person_distance_m": 2.312,
+          "human_distance_level": "close",
+          "relative_motion": "stationary"
+        }
+      ],
+      "camera_motion": "turning"
+    }
+  ]
+}

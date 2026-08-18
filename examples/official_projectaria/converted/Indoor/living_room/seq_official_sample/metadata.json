@@ -1,0 +1,14 @@
+{
+  "sequence_id": "seq_official_sample",
+  "scene_name": "living_room",
+  "environment": "indoor",
+  "time_of_day": "day",
+  "weather": null,
+  "crowd_density": "low",
+  "collector_id": 0,
+  "num_frames": 200,
+  "frame_rate": 10.0,
+  "duration_sec": 19.898786,
+  "trajectory_length_m": 4.429208,
+  "occlusion_level": "low"
+}

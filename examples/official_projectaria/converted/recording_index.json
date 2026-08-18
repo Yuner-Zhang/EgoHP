@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "recordings": [
+    {
+      "source_vrs": "../raw/0/AriaGen2PilotDataset_v1.0_play_0_main_recording.vrs",
+      "source_vrs_filename": "AriaGen2PilotDataset_v1.0_play_0_main_recording.vrs",
+      "sequence_id": "seq_official_sample",
+      "collector_id": 0,
+      "converted_sequence": "Indoor/living_room/seq_official_sample",
+      "converted_vrs": "Indoor/living_room/seq_official_sample/seq_official_sample.vrs",
+      "converted_mp4": "Indoor/living_room/seq_official_sample/seq_official_sample.mp4",
+      "environment": "indoor",
+      "scene_name": "living_room"
+    }
+  ]
+}
