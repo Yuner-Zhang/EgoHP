@@ -25,9 +25,9 @@ converted/
 ```
 
 The excerpt contains the first 200 RGB frames at 10 FPS. Person annotations
-were generated with YOLO Pose, BoT-SORT, screen filtering, and three expected
-appearance identities. Temporal labels use the official closed-loop trajectory,
-IMU, calibration, and semidense MPS geometry.
+were generated with YOLO Pose, BoT-SORT, and screen filtering. Temporal labels
+use the official closed-loop trajectory, IMU, calibration, and semidense MPS
+geometry.
 
 The original VRS and `mps/` directory are intentionally excluded because they
 are too large for Git. The MP4, TXT, and JSON files are direct outputs of the
@@ -54,7 +54,6 @@ python tools/prepare_data.py \
   --sequence-id seq_official_sample \
   --mps-dir /path/to/official/mps \
   --max-video-frames 200 \
-  --expected-person-count 3 \
   --min-track-hits 20 \
   --cpu-decode \
   --no-keep-mps
