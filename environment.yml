@@ -1,15 +1,12 @@
 name: egohp_gen2
 channels:
-  - pytorch
-  - nvidia
   - defaults
 dependencies:
   - python=3.10
   - pip
-  - pytorch=2.6.0
-  - torchvision=0.21.0
-  - pytorch-cuda=12.4
   - pip:
+      - torch==2.6.0
+      - torchvision==0.21.0
       - projectaria-gen2-pilot-dataset==1.1.0
       - projectaria-mps==1.2.3
       - imageio==2.37.4
