@@ -4,6 +4,10 @@ EgoHP converts a Project Aria Gen 2 `.vrs` recording into a labeled
 egocentric-human sequence. It exports sensor data, tracks people, creates
 dynamic labels, and sorts each sequence by indoor/outdoor scene.
 
+> **New user:** follow [Quick Start: Official Project Aria Example](QUICK_START_EXAMPLE.md)
+> to create the environment, download the official `play_0` VRS and MPS data,
+> download YOLO11 weights, configure the API, and run a 20-second test.
+
 ## Data Structure
 
 ```text
@@ -55,7 +59,9 @@ seq_xxx/
 
 ## Environment
 
-All dependencies are defined in one file:
+For a complete first-time setup, including dataset and model downloads, use the
+[Quick Start](QUICK_START_EXAMPLE.md). All Python dependencies are defined in
+one file:
 
 ```bash
 conda env create -f environment.yml
