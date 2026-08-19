@@ -62,6 +62,22 @@ python -c "import os; print('API key configured:', bool(os.getenv('EGOHP_API_KEY
 python tools/run_official_example.py --sequence play_0
 ```
 
+Add either option to the same command when the corresponding final output is
+not needed:
+
+```text
+--no-visualize   # do not generate frame_labels_vis.mp4
+--no-keep-mps    # do not retain mps/slam/ in the final sequence
+```
+
+For example, omit both optional outputs with:
+
+```bash
+python tools/run_official_example.py --sequence play_0 --no-visualize --no-keep-mps
+```
+
+Without these options, both `frame_labels_vis.mp4` and `mps/slam/` are retained.
+
 This single command:
 
 1. Reads the current Project Aria Gen2 Pilot download manifest.
@@ -71,8 +87,7 @@ This single command:
 5. Runs conversion, person labeling, temporal labeling, and metadata labeling.
 6. Places the result under the API-inferred indoor/outdoor scene directory.
 
-The script processes the full recording, uses GPU `0` for YOLO, creates the
-review video, and retains MPS in the final sequence by default.
+The script processes the full recording and uses GPU `0` for YOLO by default.
 
 ## Automatically created directories
 
@@ -119,47 +134,6 @@ frame_labels.json
 temporal_labels.json
 metadata.json
 frame_labels_vis.mp4
-```
-
-## Useful switches
-
-Process only the first 200 RGB frames for a quick validation:
-
-```bash
-python tools/run_official_example.py --sequence play_0 --sample
-```
-
-Use the CPU for YOLO when no compatible NVIDIA GPU is available:
-
-```bash
-python tools/run_official_example.py --sequence play_0 --detector-device cpu
-```
-
-Do not generate `frame_labels_vis.mp4`:
-
-```bash
-python tools/run_official_example.py --sequence play_0 --no-visualize
-```
-
-Do not retain `mps/slam/` in the final sequence:
-
-```bash
-python tools/run_official_example.py --sequence play_0 --no-keep-mps
-```
-
-`--no-keep-mps` removes only the final sequence copy. The verified MPS cache is
-kept so later runs do not download it again.
-
-Download and verify only the VRS and MPS:
-
-```bash
-python tools/run_official_example.py --sequence play_0 --download-only
-```
-
-Show official filenames, sizes, and destinations without downloading:
-
-```bash
-python tools/run_official_example.py --sequence play_0 --dry-run
 ```
 
 ## Notes
