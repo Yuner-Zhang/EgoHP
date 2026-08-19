@@ -4,10 +4,58 @@ EgoHP converts a Project Aria Gen 2 `.vrs` recording into a labeled
 egocentric-human sequence. It exports sensor data, tracks people, creates
 dynamic labels, and sorts each sequence by indoor/outdoor scene.
 
+## Setup
+
+Run these steps in Ubuntu 20.04 or WSL Ubuntu 20.04.
+
+### 1. Create the environment
+
+```bash
+conda env create -f environment.yml
+conda activate egohp_gen2
+```
+
+### 2. Add your own API key
+
+The default pipeline uses OpenAI's vision API to generate the scene labels in
+`metadata.json`. Replace `PASTE_YOUR_OWN_API_KEY_HERE` with your own OpenAI API
+key:
+
+```bash
+conda env config vars set EGOHP_API_KEY="PASTE_YOUR_OWN_API_KEY_HERE" -n egohp_gen2
+conda deactivate
+conda activate egohp_gen2
+```
+
+> Do not use the placeholder text and do not commit your API key to Git.
+
+Confirm that the key is available without printing the secret:
+
+```bash
+python -c "import os; print('API key configured:', bool(os.getenv('EGOHP_API_KEY')))"
+```
+
+### 3. Download the YOLO11 weights
+
+```bash
+mkdir -p data/models
+cd data/models
+python -c "from ultralytics import YOLO; YOLO('yolo11s-pose.pt'); YOLO('yolo11s.pt')"
+cd ../..
+```
+
+`environment.yml` installs Ultralytics and the other software dependencies; it
+does not contain pretrained `.pt` model files. The command above downloads the
+two weights once to `data/models/`.
+
+To download and process any sequence from the Project Aria Gen2 Pilot website,
+follow [Quick Start: Official Project Aria Example](QUICK_START_EXAMPLE.md).
+That workflow downloads VRS, MPS, and missing YOLO weights automatically.
+
 ## Data Structure
 
 ```text
-EgoHP_data/
+data/
 |-- raw/
 |   |-- 0/                              # collector_id = 0
 |   |   `-- <recording>.vrs
@@ -53,36 +101,17 @@ seq_xxx/
 - `metadata.json`: scene-level labels and recording statistics.
 - `collectors.json`: anonymous collector gender and height; edit manually.
 
-## Environment
-
-All dependencies are defined in one file:
-
-```bash
-conda env create -f environment.yml
-conda activate egohp_gen2
-```
-
-Save the vision API key in the conda environment once:
-
-```bash
-conda env config vars set EGOHP_API_KEY="your-key" -n egohp_gen2
-conda deactivate
-conda activate egohp_gen2
-```
-
-Optional API overrides are `EGOHP_API_ENDPOINT` and `EGOHP_API_MODEL`.
-
-## Run the Full Pipeline
+## Process Your Own VRS
 
 Run this command in Ubuntu 20.04/WSL:
 
 ```bash
 python tools/prepare_data.py \
-  --vrs /mnt/g/EgoHP_data/raw/0/recording.vrs \
-  --dataset-root /mnt/g/EgoHP_data/converted \
+  --vrs data/raw/0/recording.vrs \
+  --dataset-root data/converted \
   --sequence-id seq_001 \
-  --person-model /mnt/g/EgoHP_data/models/yolo11s-pose.pt \
-  --screen-model /mnt/g/EgoHP_data/models/yolo11s.pt \
+  --person-model data/models/yolo11s-pose.pt \
+  --screen-model data/models/yolo11s.pt \
   --detector-device 0 \
   --cpu-decode
 ```
@@ -100,6 +129,8 @@ exist locally.
 The steps run in order. `prepare_data.py` is the main entry point and calls the
 remaining scripts automatically.
 
+0. `run_official_example.py` — optionally downloads an official Pilot VRS,
+   matching MPS, and YOLO11 weights before calling the pipeline.
 1. `prepare_data.py` — obtains or reuses MPS data and runs the full pipeline.
 2. `convert_to_egohp.py` — copies the VRS and exports MP4, IMU, trajectory, and
    MPS files.
