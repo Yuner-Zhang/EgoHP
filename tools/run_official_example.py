@@ -4,6 +4,7 @@
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 import urllib.error
@@ -21,6 +22,11 @@ from prepare_data import (
 
 
 YOLO_MODELS = ("yolo11s-pose.pt", "yolo11s.pt")
+INTERMEDIATE_DIRECTORIES = (
+    ".egohp_downloads",
+    ".egohp_cache",
+    ".egohp_staging",
+)
 
 
 def load_manifest(url: str) -> dict:
@@ -218,6 +224,19 @@ def run_pipeline(
     subprocess.run([str(value) for value in command], check=True)
 
 
+def cleanup_intermediate_directories(converted_root: Path) -> None:
+    """Remove run-only downloads, extracted MPS cache, and staging output."""
+    for name in INTERMEDIATE_DIRECTORIES:
+        target = converted_root / name
+        if not target.exists() and not target.is_symlink():
+            continue
+        if target.is_symlink():
+            target.unlink()
+        else:
+            shutil.rmtree(target)
+        print(f"Removed intermediate directory: {target}", flush=True)
+
+
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -327,6 +346,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         )
     person_model, screen_model = ensure_yolo_models(model_dir)
     run_pipeline(args, vrs_path, mps_dir, person_model, screen_model)
+    cleanup_intermediate_directories(dataset_root / "converted")
 
 
 if __name__ == "__main__":

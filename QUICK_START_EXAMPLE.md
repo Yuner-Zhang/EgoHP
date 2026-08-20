@@ -86,6 +86,8 @@ This single command:
 4. Downloads `yolo11s-pose.pt` and `yolo11s.pt` when missing.
 5. Runs conversion, person labeling, temporal labeling, and metadata labeling.
 6. Places the result under the API-inferred indoor/outdoor scene directory.
+7. Deletes the MPS download archive, extracted cache, and staging directory
+   after the final sequence has been assembled successfully.
 
 The script processes the full recording and uses GPU `0` for YOLO by default.
 
@@ -101,14 +103,18 @@ data/
 |   |-- yolo11s-pose.pt
 |   `-- yolo11s.pt
 `-- converted/
-    |-- .egohp_downloads/       # resumable official MPS archives
-    |-- .egohp_cache/           # extracted reusable MPS
-    |-- .egohp_staging/         # temporary processing directory
     |-- recording_index.json
     |-- collectors.json          # fill gender and height manually
     |-- Indoor/
     `-- Outdoor/
 ```
+
+During processing, the script temporarily creates `.egohp_downloads/`,
+`.egohp_cache/`, and `.egohp_staging/` under `converted/`. They are removed
+only after the complete pipeline succeeds. An interrupted or failed run keeps
+them so the download can resume and the failure can be inspected. This cleanup
+does not remove the final sequence's `mps/slam/`; that directory is retained by
+default and is controlled separately by `--no-keep-mps`.
 
 If `data` is a symbolic link, all directories are created at its target.
 `raw/0/` gives this recording `collector_id: 0`; use `--collector-id N` to
@@ -138,13 +144,15 @@ frame_labels_vis.mp4
 
 ## Notes
 
-- Keep about 20 GB free for the full VRS, MPS archives, extracted cache, and
-  generated outputs.
+- Keep about 20 GB free while processing the full VRS, MPS archives, extracted
+  cache, and generated outputs. The three intermediate directories are removed
+  after a successful run.
 - Interrupted official downloads are resumed when the server supports it.
 - If `EGOHP_API_KEY` is reported missing, reactivate the conda environment.
 - If CUDA inference fails, rerun with `--detector-device cpu`.
 - If an interrupted run left staging files, inspect them and rerun with
-  `--overwrite-staging`.
+  `--overwrite-staging`. A successful rerun removes all three intermediate
+  directories automatically.
 
 The official dataset and its formats are documented by
 [Project Aria Gen2 Pilot](https://github.com/facebookresearch/projectaria_gen2_pilot_dataset)
